@@ -47,7 +47,19 @@ public class TicTacToe {
             } else {
                 currentPlayerIndex = (currentPlayerIndex + 1) % 2;
             }
+
+            // Überprüfen, ob das Spiel vorbei ist und ob der Benutzer ein neues Spiel starten möchte
+            if (!playing) {
+                System.out.print("Do you want to play again? (y/n): ");
+                char response = scanner.next().charAt(0);
+                if (response == 'y' || response == 'Y') {
+                    board.reset(); // Gesamtes Spielfeld zurücksetzen
+                    currentPlayerIndex = 0; // Den ersten Spieler setzen
+                    playing = true;
+                }
+            }
         }
+        scanner.close();
     }
 
     public static void main(String[] args) {
